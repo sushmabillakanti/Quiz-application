@@ -1,2 +1,1 @@
-# Quiz-application,
-sbdvfnklc,
+This is a simple Application with Html and Css files
