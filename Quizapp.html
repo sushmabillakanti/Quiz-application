@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Quiz App</h1>
+        <div id="quiz">
+            <div class="question">What is the capital of France?</div>
+            <div class="options">
+                <button class="option">Berlin</button>
+                <button class="option">Madrid</button>
+                <button class="option">Paris</button>
+                <button class="option">Rome</button>
+            </div>
+        </div>
+        <button id="submit">Submit</button>
+        <div id="result"></div>
+    </div>
+    <script>
+        const options = document.querySelectorAll('.option');
+        const result = document.getElementById('result');
+        const correctAnswer = "Paris";
+
+        options.forEach(option => {
+            option.addEventListener('click', () => {
+                options.forEach(btn => btn.classList.remove('selected'));
+                option.classList.add('selected');
+            });
+        });
+
+        document.getElementById('submit').addEventListener('click', () => {
+            const selected = document.querySelector('.option.selected');
+            if (selected) {
+                if (selected.textContent === correctAnswer) {
+                    result.textContent = "Correct!";
+                    result.style.color = "green";
+                } else {
+                    result.textContent = "Wrong! Try again.";
+                    result.style.color = "red";
+                }
+            } else {
+                result.textContent = "Please select an answer.";
+                result.style.color = "orange";
+            }
+        });
+    </script>
+</body>
+</html>
